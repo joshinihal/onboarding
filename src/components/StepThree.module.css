@@ -1,0 +1,30 @@
+.plans-container{
+    display: flex;
+    width: 30vw;
+    margin: 1rem auto;
+    justify-content: space-between;
+}
+
+.plan{
+    border-radius: 6px;
+    width: 45%;
+    padding: 2rem 0.5rem;
+    text-align: left;
+    border: 1px solid #dcdbdb;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.plan:hover{
+    border: 2px solid #7459e0;
+}
+
+.plan:hover .icon{
+    color: #7459e0;
+}
+
+.icon{
+    margin: 1rem 0;
+    font-size: 2rem;
+}

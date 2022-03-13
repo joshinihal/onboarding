@@ -1,0 +1,30 @@
+.optional{
+    color: darkgrey;
+}
+
+.prefix{
+    border: 1px solid #dcdbdb;
+    height: 2.6vw;
+    display: grid;
+    place-content: center;
+    max-height: 2.6vw;
+    width: 10rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #e6e8ea69;
+    color: dimgrey;
+}
+
+.url-input{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 0;
+    width: 100%;
+}
+
+.url-container{
+    display: flex;
+    align-items: center;
+}
