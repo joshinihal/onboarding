@@ -1,9 +1,12 @@
-const StepOne = () => {
+const StepOne = (props) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.onNext();
+  };
+
   return (
     <div>
-      <h2>Welcome! First things first...</h2>
-      <p className="subheading">You can always change them later.</p>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <label className="input-label" htmlFor="fullname">
           Full Name
         </label>

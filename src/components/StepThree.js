@@ -1,13 +1,13 @@
 import classes from "./StepThree.module.css";
 
-const StepThree = () => {
+const StepThree = (props) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.onNext();
+  };
   return (
     <div>
-      <h2>How are you planning to use Eden?</h2>
-      <p className="subheading">
-        We'll streamline your setup experience accordingly.
-      </p>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <div className={classes["plans-container"]}>
           <div className={classes["plan"]}>
             <span className={`material-icons ${classes.icon}`}>person</span>

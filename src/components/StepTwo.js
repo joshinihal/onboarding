@@ -1,14 +1,14 @@
 import classes from "./StepTwo.module.css";
 
-const StepTwo = () => {
+const StepTwo = (props) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.onNext();
+  };
+
   return (
     <div>
-      <h2>Let's set up a home for all your work</h2>
-      <p className="subheading">
-        You can always create another workspace later.
-      </p>
-
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <label className="input-label" htmlFor="workspaceName">
           Workspace Name
         </label>

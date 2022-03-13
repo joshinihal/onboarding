@@ -1,14 +1,15 @@
 import classes from "./Congratulations.module.css";
 
-const Congratulations = () => {
+const Congratulations = (props) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // props.onNext();
+  };
+
   return (
     <div>
       <span className={`material-icons ${classes.icon}`}>check</span>
-      <h2>Congratulations, Eren!</h2>
-      <p className="subheading">
-        You have completed onboarding, you can start using Eden!
-      </p>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <button className="btn purple" type="Submit">
           Launch Eden
         </button>
