@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 import "./App.css";
@@ -10,9 +11,18 @@ import Congratulations from "./components/Congralutions";
 import Error from "./components/Error";
 import Stepper from "./components/Stepper";
 
+import { userActions } from './store/user';
+
 function App() {
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const userState = useSelector((state) => {
+    console.log('state',state)
+    return state.user;
+  });
 
   // get event from child components
   // if it is the last route, go back to the first
@@ -25,31 +35,35 @@ function App() {
     }
   }
 
+  const handleUserDataChange = (user) => {
+    dispatch(userActions.addUserDetails(user));
+  }
+
   const routes = [
     {
       name: "Step One",
       title: "Welcome! First things first...",
       subtitle: "You can always change them later.",
-      component: <StepOne onNext={handleNext} />,
+      component: <StepOne onUserDataChange={handleUserDataChange} userState={userState} onNext={handleNext} />,
       route: "/stepone",
     },
     {
       name: "Step Two",
       title: "Let's set up a home for all your work",
       subtitle: "You can always create another workspace later.",
-      component: <StepTwo onNext={handleNext}/>,
+      component: <StepTwo onUserDataChange={handleUserDataChange} userState={userState} onNext={handleNext}/>,
       route: "/steptwo",
     },
     {
       name: "Step Three",
       title: "How are you planning to use Eden?",
       subtitle: "We'll streamline your setup experience accordingly.",
-      component: <StepThree onNext={handleNext}/>,
+      component: <StepThree onUserDataChange={handleUserDataChange} userState={userState} onNext={handleNext}/>,
       route: "/stepthree",
     },
     {
       name: "Congratulations",
-      title: "Congratulations, Eren!",
+      title: `Congratulations, ${userState.userDetails.fullName}!`,
       subtitle: "You have completed onboarding, you can start using Eden!",
       component: <Congratulations />,
       route: "/congratulations",

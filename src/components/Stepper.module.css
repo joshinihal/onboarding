@@ -1,6 +1,6 @@
 .stepper-container{
     display: flex;
-    margin: auto;
+    margin: 2rem auto;
     width: 30vw;
     justify-content: space-around;
     align-items: center;

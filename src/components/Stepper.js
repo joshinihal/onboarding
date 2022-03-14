@@ -5,7 +5,7 @@ const Stepper = (props) => {
   const steps = [...Array(props.size ? props.size : 0)];
 
   const stepper = steps.map((e, i) => (
-    <React.Fragment>
+    <React.Fragment key={i}>
       <div
         className={`${i <= props.current ? "purple" : classes["step-border"]} ${classes["step"]}`}
       >

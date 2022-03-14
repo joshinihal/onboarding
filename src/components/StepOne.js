@@ -1,7 +1,23 @@
+import { useState } from "react";
+
 const StepOne = (props) => {
+
+  const [fullName, setFullName] = useState(props.userState.userDetails.fullName);
+  const [displayName, setDisplayName] = useState(props.userState.userDetails.displayName);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const newState = {...props.userState.userDetails, fullName, displayName};
+    props.onUserDataChange(newState);
     props.onNext();
+  };
+
+  const handleFullNameChange = (e) => {
+    setFullName(e.target.value);
+  };
+
+  const handleDisplayNameChange = (e) => {
+    setDisplayName(e.target.value);
   };
 
   return (
@@ -16,6 +32,8 @@ const StepOne = (props) => {
           id="fullname"
           placeholder="Steve Jobs"
           type="text"
+          value={fullName}
+          onChange={handleFullNameChange}
         ></input>
         <label className="input-label" htmlFor="displayname">
           Display Name
@@ -26,6 +44,8 @@ const StepOne = (props) => {
           id="displayname"
           placeholder="Steve"
           type="text"
+          value={displayName}
+          onChange={handleDisplayNameChange}
         ></input>
         <button className="btn purple" type="Submit">
           Create Workspace

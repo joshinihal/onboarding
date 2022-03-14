@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import classes from "./StepThree.module.css";
 
@@ -18,15 +18,24 @@ const StepThree = (props) => {
     },
   ];
 
+  useEffect(()=>{
+    const ind = plans.findIndex(el => el.type === props.userState.userDetails.plan);
+    if(ind !== -1){
+      setSelectedPlan(ind);
+    }
+  },[])
+
   const [selectedPlan, setSelectedPlan] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const plan = plans[selectedPlan].type;
+    const newState = {...props.userState.userDetails, plan};
+    props.onUserDataChange(newState);
     props.onNext();
   };
 
   const planSelectHandler = (index) => {
-    console.log('index',index)
     setSelectedPlan(index)
   };
 
@@ -35,7 +44,7 @@ const StepThree = (props) => {
       <form className="form" onSubmit={handleSubmit}>
         <div className={classes["plans-container"]}>
           {plans.map((plan,i) => (
-            <div onClick={() => planSelectHandler(i)} className={` ${i=== selectedPlan? classes["selected-plan"] :''} ${classes["plan"]}`}>
+            <div key={i} onClick={() => planSelectHandler(i)} className={` ${i=== selectedPlan? classes["selected-plan"] :''} ${classes["plan"]}`}>
               <span className={`${i=== selectedPlan? classes["selected-icon"] :''} material-icons ${classes.icon}`}>{plan.icon}</span>
               {plan.title}
               <p>{plan.subtitle}</p>
