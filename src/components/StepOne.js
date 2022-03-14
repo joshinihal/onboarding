@@ -11,6 +11,7 @@ const StepOne = (props) => {
           Full Name
         </label>
         <input
+          required
           className="input-box"
           id="fullname"
           placeholder="Steve Jobs"
@@ -20,6 +21,7 @@ const StepOne = (props) => {
           Display Name
         </label>
         <input
+          required
           className="input-box"
           id="displayname"
           placeholder="Steve"

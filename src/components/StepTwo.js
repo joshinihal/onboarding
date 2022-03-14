@@ -12,7 +12,7 @@ const StepTwo = (props) => {
         <label className="input-label" htmlFor="workspaceName">
           Workspace Name
         </label>
-        <input
+        <input required
           className="input-box"
           id="workspaceName"
           placeholder="Eden"

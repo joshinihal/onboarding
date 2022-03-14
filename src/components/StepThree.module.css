@@ -20,6 +20,10 @@
     border: 2px solid #7459e0;
 }
 
+.selected-plan{
+    border: 2px solid #7459e0;
+}
+
 .plan:hover .icon{
     color: #7459e0;
 }
@@ -27,4 +31,8 @@
 .icon{
     margin: 1rem 0;
     font-size: 2rem;
+}
+
+.selected-icon{
+    color: #7459e0;
 }

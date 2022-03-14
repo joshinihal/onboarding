@@ -1,24 +1,46 @@
+import { useState } from "react";
+
 import classes from "./StepThree.module.css";
 
 const StepThree = (props) => {
+  const plans = [
+    {
+      type: "individual",
+      title: "For Myself",
+      subtitle: "Write better. Think more clearly. Stay organized.",
+      icon: 'person'
+    },
+    {
+      type: "group",
+      title: "With my team",
+      subtitle: "Wikis, docs, tasks & projects all in one place.",
+      icon: 'group'
+    },
+  ];
+
+  const [selectedPlan, setSelectedPlan] = useState(0);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     props.onNext();
   };
+
+  const planSelectHandler = (index) => {
+    console.log('index',index)
+    setSelectedPlan(index)
+  };
+
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
         <div className={classes["plans-container"]}>
-          <div className={classes["plan"]}>
-            <span className={`material-icons ${classes.icon}`}>person</span>
-            For Myself
-            <p>Write better. Think more clearly. Stay organized.</p>
-          </div>
-          <div className={classes["plan"]}>
-            <span className={`material-icons ${classes.icon}`}>groups</span>
-            With my team
-            <p>Wikis, docs, tasks & projects all in one place.</p>
-          </div>
+          {plans.map((plan,i) => (
+            <div onClick={() => planSelectHandler(i)} className={` ${i=== selectedPlan? classes["selected-plan"] :''} ${classes["plan"]}`}>
+              <span className={`${i=== selectedPlan? classes["selected-icon"] :''} material-icons ${classes.icon}`}>{plan.icon}</span>
+              {plan.title}
+              <p>{plan.subtitle}</p>
+            </div>
+          ))}
         </div>
         <button className="btn purple" type="Submit">
           Create Workspace
