@@ -1,0 +1,31 @@
+.stepper-container{
+    display: flex;
+    margin: auto;
+    width: 30vw;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.step{
+    padding: 0.5rem;
+    border-radius: 25px;
+    height: 1.5rem;
+    width: 5%;
+    display: grid;
+    place-content: center;
+}
+
+.step-border{
+    border: 1px solid;
+}
+
+.connector{
+    width: 22%;
+    height: 0.2rem;
+}
+
+.step-container{
+    display: flex;
+    width: 30%;
+    align-items: center;
+}

@@ -8,6 +8,7 @@ import StepThree from "./components/StepThree";
 import StepTwo from "./components/StepTwo";
 import Congratulations from "./components/Congralutions";
 import Error from "./components/Error";
+import Stepper from "./components/Stepper";
 
 function App() {
 
@@ -82,7 +83,7 @@ function App() {
       <header className="App-header">
         <Header />
       </header>
-      <div>Stepper</div>
+      <Stepper current={currentRoute} size={routes.length-1} />
       <h2>{routes[currentRoute].title}</h2>
       <p className="subheading">{routes[currentRoute].subtitle}</p>
       <div>
